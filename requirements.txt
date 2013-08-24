@@ -14,3 +14,4 @@ psycopg2==2.5.1
 requests==1.2.3
 webassets==0.8
 wsgiref==0.1.2
+geoalchemy2==0.2.1
