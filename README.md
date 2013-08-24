@@ -11,10 +11,7 @@ Please visit the app on Heroku: [Quake Risk Map](http://quake-risk-map.herokuapp
 
 ### Performance Characteristics
 
-More to come, but quickly:
-	
-- Bounding box construction is low-cost and the actual filter (ST_DWithin) is much faster than putting ST_Distance in the WHERE clause. ST_Distance actually solves the distance problem, whereas ST_DWithin just provides a boolean answer as to whether or not something is in the bounding box.
-- Can increase speed by measuring distance on the sphere (not spheroid, which is what this currently uses) depending upon real-world accuracy and precision requirements.
+Please see this repository's [detailed wiki article](https://github.com/zdexter/quake-map/wiki/Efficiently-finding-cities-near-earthquake-events) on efficiently finding cities near earthquakes events.
 	
 ## Hacking
 
