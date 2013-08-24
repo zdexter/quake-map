@@ -1,49 +1,8 @@
-<!DOCTYPE html>
-<html ng-app="quakesApp">
-  <head>
-    <meta charset="utf-8">
-    <title>Quakes Demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    {% assets 'css_libs', 'css_app' %}
-    <link rel="stylesheet" href="{{ ASSET_URL }}">
-    {% endassets %}
-  </head>
-  <body>
-    <div class="container-narrow">
+{% extends 'base.html' %}
 
-      <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-        </ul>
-        <h3 class="muted">Quake Risk Map</h3>
-      </div>
+{% block heading %}Map View{% endblock %}
 
-      <hr>
-
-      <table class="table table-hover">
-        <th>Quake Coordinations</th>
-        <th>Cities within 200km</th>
-        {% for quake in quakes %}
-        <tr>
-          <td>{{quake[0]}}</td>
-          <td>
-            <table class="table-bordered">
-              <th>City Name</th>
-              <th>Distance</th>
-              {% for city, distance in quake[1] %}
-              <tr>
-                <td>{{ city }}</td>
-                <td>{{ distance|round(2, 'floor') }}</td>
-              </tr>
-              {% endfor %}
-            </table>
-        </tr>
-        {% endfor %}
-      </table>
-
-      <hr>
-
+{% block content %}
       <div class="jumbotron" ng-ctrl='dashCtrl'>
         <leaflet defaults="defaults" center="center" height="480px" width="700px"></leaflet>
       </div>
@@ -55,8 +14,5 @@
       </div>
 
     </div> <!-- /container -->
-    {% assets 'js_libs', 'js_app' %}
-    <script src="{{ ASSET_URL }}"></script>
-    {% endassets %}
-  </body>
-</html>
+{% endblock %}
+

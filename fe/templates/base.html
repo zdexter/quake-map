@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="quakesApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Quakes Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    {% assets 'css_libs', 'css_app' %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}
+  </head>
+  <body>
+    <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="{{ url_for('dashView') }}">Map</a></li>
+          <li><a href="{{ url_for('quakeListView') }}">List</a></li>
+        </ul>
+        <h3 class="muted">Quake Risk System</h3>
+      </div>
+
+      <h4>
+      {% block heading %}
+      {% endblock %}
+      </h4>
+
+      <hr>
+
+      {% block content %}
+      {% endblock %}
+
+      <hr>
+
+      <div class="footer">
+        <p></p>
+      </div>
+
+    </div> <!-- /container -->
+    {% assets 'js_libs', 'js_app' %}
+    <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+  </body>
+</html>

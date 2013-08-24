@@ -4,6 +4,10 @@ from fe.models.dal.event import EventDAL
 
 @app.route('/')
 def dashView(methods=['GET']):
+    return render_template('dash.html')
+
+@app.route('/quakes/list')
+def quakeListView(methods=['GET']):
     # Just a way to trigger the query
     quakes = EventDAL.getAllQuakes()
     display_quakes = []
@@ -14,5 +18,5 @@ def dashView(methods=['GET']):
         nearby_cities = EventDAL.getNearbyCities(quake.event)
         display_quakes.append(((quake.event.lng, quake.event.lat),
                 [(city.name, distance) for city, distance in nearby_cities]))
-    return render_template('dash.html', quakes=display_quakes)
+    return render_template('quake_list.html', quakes=display_quakes)
 

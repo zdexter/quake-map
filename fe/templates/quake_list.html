@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block heading %}List View{% endblock %}
+
+{% block content %}
+      <table class="table table-hover">
+        <th>Quake Coordinations</th>
+        <th>Cities within 200km</th>
+        {% for quake in quakes %}
+        <tr>
+          <td>{{quake[0]}}</td>
+          <td>
+            <table class="table-bordered">
+              <th>City Name</th>
+              <th>Distance</th>
+              {% for city, distance in quake[1] %}
+              <tr>
+                <td>{{ city }}</td>
+                <td>{{ distance|round(2, 'floor') }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+        </tr>
+        {% endfor %}
+      </table>
+{% endblock %}
